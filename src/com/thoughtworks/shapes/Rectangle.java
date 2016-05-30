@@ -1,6 +1,6 @@
 package com.thoughtworks.shapes;
 
-public class Rectangle {
+public class Rectangle implements Shape{
     private double length;
     private double breadth;
 
@@ -9,15 +9,8 @@ public class Rectangle {
         this.breadth = breadth;
     }
 
-    public double getBreadth() {
-        return breadth;
-    }
 
-    public double getLength() {
-        return length;
-    }
-
-    public double computeArea(){
+    public double area(){
         return length*breadth;
     }
 }
