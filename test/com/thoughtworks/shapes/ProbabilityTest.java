@@ -56,20 +56,38 @@ public class ProbabilityTest {
 
     @Test
     public void testAndProbability() {
-//        Probability p1 = new Probability(0.2);
-//        Probability p2 = new Probability(0.2);
-//        Assert.assertThat(p1.and(p2),is(new Probability(0.04)));
-        Probability p1 = new Probability(1);
-        Probability p2 = new Probability(1);
-        Assert.assertThat(p1.and(p2), is(new Probability(1)));
-
+        Probability p1 = new Probability(0.2);
+        Probability p2 = new Probability(0.2);
+        Assert.assertThat(p1.and(p2),is(new Probability(0.04)));
     }
 
+
+    @Test
+    public void testOrForTwoIndependentEvents(){
+        Probability p1 = new Probability(0.2);
+        Probability p2 = new Probability(0.2);
+        Assert.assertThat(p1.or(p2),is(new Probability(0.36)));
+    }
+
+    @Test
+    public void testOrForTwoIndependentEventsWithUpperBounds(){
+        Probability p1 = new Probability(1.0);
+        Probability p2 = new Probability(1.0);
+        Assert.assertThat(p1.or(p2),is(new Probability(1.0)));
+    }
     @Test
     public void testAndProbabilityForNull() {
         Probability p1 = new Probability(1);
 
         Assert.assertThat(p1.and(null), is(new Probability(0)));
+
+    }
+
+    @Test
+    public void testOrProbabilityForNull() {
+        Probability p1 = new Probability(1);
+
+        Assert.assertThat(p1.or(null), is(p1));
 
     }
 }
